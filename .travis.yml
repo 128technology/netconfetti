@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '8'
+install:
+- npm install
+script:
+- npm run validate
+deploy:
+  provider: npm
+  email: dbuchanan@128technology.com
+  skip_cleanup: true
+  on:
+    branch: master
+  api_key:
+    secure: TdAt+B7k0SInw01EqXN46RQUHbSitdiXM4qkFaOtG9+H2WzWbAky4tHdWIJOl8GVDsgEi38PtgpDECuGkPuTCA4/FeUBnCgUue2drqHcEGqpHrlN+swCB9lk3VtEAufaeh9kBN38Ik0WK84IIjpxscPdR4Y2brwfnwDXadld7ekFn7fdpmK41wlPA0PUYZiI7CbHGWxW9GCp+84Fkbh0M5r1eb7jzC4aGBpJ4sXjoKP9MUwbl10wV/0S0QhG9fa7voiYFJltXjokFyeLYZT5ql7rDxUyWrj7ks5vJNCM897BEJGJX5LJ9sWE19dH5eAcWmfAsraHBXbFQ89RQmF4Dqbxxuq/Wh9ic81YJ1Q0/LNriK/XvWn0LDqZkNC6CAMU+OIUrxrVZo8VRgSxufoVe1RoYUNMlz2zlR27xxQ6ZTSdqXFzfWFzbXBlvW9rBkWpB+L0yNEcyAeo8xd5fq4WJH1khP9qXgtXxNcAntZyPjHgDGmsoFCXNJxsNWw7xKYanajhj3Nc/U6eWmEFyR8GRbjKnZHY23fmvYgx1YxVK4vaL3EyUFwkh5PUb2iHlCi4SwBCwN2agQnU+latRY6XWUbe3NAZmAQNVjfUZmkhV3/N9NwVvbL3fnzzmjVCfL6TAWf6CsyegNPM3LCduNSoKjdEN1eFjPlOBRWpVW6gkig=
