@@ -6,10 +6,11 @@ install:
 script:
 - npm run validate
 deploy:
-  provider: npm
-  email: dbuchanan@128technology.com
-  skip_cleanup: true
-  on:
-    branch: master
-  api_key:
-    secure: TdAt+B7k0SInw01EqXN46RQUHbSitdiXM4qkFaOtG9+H2WzWbAky4tHdWIJOl8GVDsgEi38PtgpDECuGkPuTCA4/FeUBnCgUue2drqHcEGqpHrlN+swCB9lk3VtEAufaeh9kBN38Ik0WK84IIjpxscPdR4Y2brwfnwDXadld7ekFn7fdpmK41wlPA0PUYZiI7CbHGWxW9GCp+84Fkbh0M5r1eb7jzC4aGBpJ4sXjoKP9MUwbl10wV/0S0QhG9fa7voiYFJltXjokFyeLYZT5ql7rDxUyWrj7ks5vJNCM897BEJGJX5LJ9sWE19dH5eAcWmfAsraHBXbFQ89RQmF4Dqbxxuq/Wh9ic81YJ1Q0/LNriK/XvWn0LDqZkNC6CAMU+OIUrxrVZo8VRgSxufoVe1RoYUNMlz2zlR27xxQ6ZTSdqXFzfWFzbXBlvW9rBkWpB+L0yNEcyAeo8xd5fq4WJH1khP9qXgtXxNcAntZyPjHgDGmsoFCXNJxsNWw7xKYanajhj3Nc/U6eWmEFyR8GRbjKnZHY23fmvYgx1YxVK4vaL3EyUFwkh5PUb2iHlCi4SwBCwN2agQnU+latRY6XWUbe3NAZmAQNVjfUZmkhV3/N9NwVvbL3fnzzmjVCfL6TAWf6CsyegNPM3LCduNSoKjdEN1eFjPlOBRWpVW6gkig=
+  - provider: npm
+    email: 128techadmin@128technology.com
+    skip_cleanup: true
+    api_key:
+      secure: qnLszql4MdHKExj0AiN3s9v7mxlMi2t28sNibcFTFGAx/RA5NUvsMZRw5Wk0Z3/JmiGVpkanzVl5d3hLcwUZidMtW3TxNi+edxleNI1uxQFPst/pXfJx+onUv6j0bNV9FfXfgw27qok/T+oNvoCdHSWMcsS64K9MSYiT+QAXEsUtO2qE1sKG76xXi9lE1VAiroO21yd3+p5eYs5ceM15Rq8DfL9/NyOM1J3AHQLYqBC0kT87U/baCf2l9CnyE1Huz+JHpgw886IJDHORbWQQODEafSHkwZbxeIeZ2tVo1LDckaGTDQAmWPphxvgqWpQpiZRahTdCWnECqQ6dVljLFWb29nkrXT3hcg45HYU9PyJP7kIIzWSCWUGX89pqURpJi1RZxODh/n7P44pV6H0TGivHjVL3B3ea4JzLZehcbTCEeYU+FvHMFZP0ZLOb5gFT3nttsfXI7/rTT8+04jzl8eACgfxk1yIv1t3g3bY1zubuHXoTtLjdohIDpEU3SLbknq+FG2UlOUu3i1KsZ3ZDsjUwiEHbfs9m/lMYF5vx3BhWnqlSAH6h/1ZypskmyMfq3MTA5e8z0LbTkAVJmX2cvBoYDp/aYsQSRAmxsBxmk9lcF4PQaFE0uEd1y9McLXtJIerhuV60L1XAY39fdGEY9YBKZlEdM4xwAr5P/33bOcs=
+    on:
+      repo: 128technology/netconfetti
+      branch: master
