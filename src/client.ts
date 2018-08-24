@@ -1,6 +1,5 @@
 import * as events from "events";
 import * as ssh2 from "ssh2";
-import * as util from "util";
 import * as uuid from "uuid";
 import * as xml2js from "xml2js";
 
@@ -29,7 +28,7 @@ export interface IClientEvents {
 
 export default class Client extends events.EventEmitter
   implements IClientEvents {
-  private readonly parser: xml2js.Parser = new xml2js.Parser();
+  private readonly parser: xml2js.Parser;
   private readonly sshClient: ssh2.Client = new ssh2.Client();
   private readonly capabilities: string[];
   private activeChannel?: ssh2.Channel;
@@ -43,9 +42,13 @@ export default class Client extends events.EventEmitter
     this.idGenerator = options.idGenerator || (() => uuid.v1());
     this.timeout = options.timeout || 1000 * 60;
     this.capabilities = options.capabilities || [];
+    this.parser = new xml2js.Parser({
+      attrNameProcessors: [xml2js.processors.stripPrefix],
+      tagNameProcessors: [xml2js.processors.stripPrefix]
+    });
   }
 
-  public async connect(options: ClientConnectionOptions): Promise<Client> {
+  public connect(options: ClientConnectionOptions): Promise<Client> {
     this.disconnect();
 
     const connectTimeout = options.connectTimeout || 20000;
@@ -91,8 +94,9 @@ export default class Client extends events.EventEmitter
         channel.on("data", (data: Buffer) => this.processData(data));
       });
 
+    let timeoutTimer: NodeJS.Timer;
     const timeout = new Promise((resolve, reject) => {
-      setTimeout(
+      timeoutTimer = setTimeout(
         () =>
           reject(new Error("Timeout waiting for NetConf client to connect.")),
         connectTimeout
@@ -102,14 +106,19 @@ export default class Client extends events.EventEmitter
     return Promise.race([connect, timeout])
       .catch(err => {
         this.disconnect();
+        clearTimeout(timeoutTimer);
         return Promise.reject(err);
       })
-      .then(() => this);
+      .then(() => {
+        clearTimeout(timeoutTimer);
+        return this;
+      });
   }
 
   public disconnect() {
     if (this.activeChannel) {
       this.activeChannel.removeAllListeners();
+      this.activeChannel.close();
       this.activeChannel = undefined;
     }
 

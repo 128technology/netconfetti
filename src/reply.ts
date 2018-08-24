@@ -8,7 +8,7 @@ export default class Reply {
 
   constructor(result: any, raw: string) {
     this.messageId = result.$["message-id"];
-    this.data = result.data;
+    this.data = result;
     this.errors = (result["rpc-error"] || []).map(
       (err: any) => new RPCError(err)
     );
