@@ -1,6 +1,6 @@
 {
   "name": "@128technology/netconfetti",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Javascript NetConf client",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
